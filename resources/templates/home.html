@@ -1,0 +1,46 @@
+<html>
+<head>
+    <link href="home.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<form action="/create-restaurant" method="post">
+    <input type="text" placeholder="Type in the restaurants name?" name="name" size="30">
+    <input type="text" placeholder="Give it a * * * * * rating?" name="rating"size="30">
+    <input type="text" placeholder="What is the signature dish?" name="sigDish" size="30">
+    <input type="text" placeholder="Latest health score? a,b,c,d,f" name="healthGrade" size="30">
+    <button type="submit">SUBMIT</button>
+</form>
+<hr>
+<form action="/delete-restaurant" method="post">
+    <input type="text" placeholder="Which restaurant name do you wanna delete" name="deleteRes" size="35">
+    <button type="submit">DELETE</button>
+
+</form>
+<hr>
+<table>
+    <tr>
+        <th>Restaurant name</th>
+        <th>Ratings</th>
+        <th>Signature Dish</th>
+        <th>Heathcode Grade</th>
+    </tr>
+</table>
+     <ul>
+        {{#restaurant}}
+        <li>{{name}}---------{{rating}}-----------{{signatureDish}}---------------{{healthGrade}}</li>
+        {{/restaurant}}
+     </ul>
+
+
+<hr>
+<form action="/update-restaurant" method="post">
+    <input type="text" placeholder="Which restaurant to update?" name="whichEdit" size="30"><p></p>
+    <input type="text" placeholder="Enter new restaurant name" name="editName" size="30">
+    <input type="text" placeholder="Enter new Rating" name="editRating" size="30">
+    <input type="text" placeholder="Enter new signature dish" name="editSigDish" size="30">
+    <input type="text" placeholder="Enter new health grade" name="editHealthGrade" size="30">
+    <button type="submit">EDIT</button>
+</form>
+</body>
+</html>
