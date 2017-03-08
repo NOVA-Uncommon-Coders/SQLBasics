@@ -38,11 +38,11 @@
                     <input type="text" placeholder="Name:" name="name">
                     <select name="type" >
                         <option selected disabled>Type</option>
-                        <option value="Casual">Casual</option>
-                        <option value="Fast Food">Fast Food</option>
-                        <option value="Dining">Dining</option>
-                        <option value="Fine Dining">Fine Dining</option>
-                        <option value="Takeout">Takeout</option>
+                        <option value="Classic">Casual</option>
+                        <option value="Sci-fi">Fast Food</option>
+                        <option value="Modern">Dining</option>
+                        <option value="Horror">Fine Dining</option>
+                        <option value="Mystery">Takeout</option>
                     </select>
                 </div>
                 <div>
@@ -57,8 +57,8 @@
             </form>
         {{/homePage}}
         {{#viewAllPage}}
-             <h1>All locations</h1>
             {{#restaurants}}
+                <h1>All locations</h1>
                 <div>
                     <h5>{{name}}</h5>
                     <p>{{type}}</p>
@@ -79,32 +79,6 @@
                         <button type="submit">Edit</button>
                     </form>
                 </div>
-                {{#edit}}
-    <div style="float:right;">
-    <form action="/edit-restaurant" method="post">
-        <div>
-            <input type="text" placeholder="Name:" name="name">
-            <select name="type" >
-                <option selected disabled>Type</option>
-                <option value="Casual">Casual</option>
-                <option value="Fast Food">Fast Food</option>
-                <option value="Dining">Dining</option>
-                <option value="Fine Dining">Fine Dining</option>
-                <option value="Takeout">Takeout</option>
-            </select>
-        </div>
-        <div>
-            <input type="text" placeholder="Street:" name="street">
-        </div>
-        <div>
-            <input type="text" placeholder="city:" name="city">
-            <input type="text" placeholder="state:" name="state">
-            <input type="text" placeholder="zip:" name="zip">
-        </div>
-        <button type="submit">edit location</button>
-    </form>
-    </div>
-                {{/edit}}
             {{/restaurants}}
         {{/viewAllPage}}
     {{/user}}
