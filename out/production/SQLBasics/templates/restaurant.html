@@ -1,0 +1,35 @@
+
+<html>
+<body>
+
+<form action="/create-restaurant" method="post">
+    <input type="text" placeholder="Enter your restaurant name" name="restaurantName"/>
+    <input type="text" placeholder="Enter your type of cuisine" name="cuisineType"/>
+    <input type="text" placeholder="Enter the owners name" name="ownerName"/>
+    <input type="text" placeholder="Enter your location" name="locationName"/>
+    <button type="submit">Create</button>
+</form>
+
+<form action="/edit-restaurant" method="post">
+    <input type="text" placeholder="Edit restaurant name" name="restaurantName"/>
+    <input type="text" placeholder="Edit cuisine type" name="cuisineType"/>
+    <input type="text" placeholder="Edit the owners name" name="ownerName"/>
+    <input type="text" placeholder="Edit your location" name="locationName"/>
+    <button type="submit">Update</button>
+</form>
+
+<form action="/delete-restaurant" method="post">
+    <input type="text" placeholder="Delete Restaurant" name="restaurantName"/>
+    <input type="hidden" value="{{Id}}" name="Id"/>
+    <button type="submit">Delete</button>
+</form>
+
+{{#entry}}
+<ul>
+{{name}} {{type}} {{owner}} {{location}}
+</ul>
+{{/entry}}
+
+
+</body>
+</html>
