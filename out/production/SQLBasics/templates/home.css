@@ -1,0 +1,8 @@
+p{ text-indent: 5em; }
+
+body{
+    background-color: lightskyblue;
+}
+nav {background: cyan; text-align: center;}
+nav ul{list-style: none;}
+nav ul li{display: inline;}
