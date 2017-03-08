@@ -1,6 +1,5 @@
 package com.theironyard.novauc;
 
-import org.h2.engine.Mode;
 import org.h2.tools.Server;
 import spark.ModelAndView;
 import spark.Session;
@@ -12,14 +11,20 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Main {
+    public static boolean edit = false;
+    public static boolean search = false;
+    public static ArrayList<Restaurant> globalRestaurants;
+    public static HashMap<String, User> user = new HashMap<>();
 
     public static void main(String[] args) throws SQLException{
-        ArrayList<Restaurant> globalRestaurants = new ArrayList<>();
-        HashMap<String, User> user = new HashMap<>();
+
+
         Server.createWebServer().start();
         Connection connection = DriverManager.getConnection("jdbc:h2:./main");
         Statement statement = connection.createStatement();
         statement.execute("CREATE TABLE IF NOT EXISTS restaurants(id IDENTITY, name VARCHAR, type VARCHAR, street VARCHAR, city VARCHAR, state VARCHAR, zip INTEGER)");
+
+        globalRestaurants = selectRestaurants(connection);
 
         Spark.staticFileLocation("/styles");
         Spark.init();
@@ -65,14 +70,16 @@ public class Main {
                     HashMap m = new HashMap();
                     Session session = request.session();
                     String userName = session.attribute("userName");
-
                     if (user.get(userName) != null){
                         user.get(userName).setViewAllPage(true);
                         user.get(userName).setHomePage(false);
                         m.put("user", user.get(userName));
                     }
-                    ArrayList<Restaurant> restaurants = globalRestaurants;
-                    m.put("restaurants", restaurants);
+                    if (!edit && !search) {
+                        //Refresh if you are not in edit mode AND not in search
+                        globalRestaurants = selectRestaurants(connection);
+                    }
+                    m.put("restaurants", globalRestaurants);
 
                     return new ModelAndView(m,"home.html");
                 }),
@@ -81,6 +88,7 @@ public class Main {
         Spark.get(
                 "/home.html",
                 ((request, response) -> {
+                    globalRestaurants = selectRestaurants(connection);
                     HashMap m = new HashMap();
                     Session session = request.session();
                     String userName = session.attribute("userName");
@@ -125,9 +133,8 @@ public class Main {
                         response.redirect("/");
                         return "";
                     } else {
-                        //0:street 1:city 2:state 3:name 4:type
                         String[] information = new String[5];
-                        int zip, id;
+                        int zip;
                         information[0] = request.queryParams("name");
                         information[1] = request.queryParams("type");
                         information[2] = request.queryParams("street");
@@ -135,8 +142,7 @@ public class Main {
                         information[4] = request.queryParams("state");
 
                         zip = Integer.valueOf(request.queryParams("zip"));
-                        id = insertRestaurant(connection, information, zip);
-                        globalRestaurants.add(new Restaurant(id, information[0], information[1], information[2], information[3], information[4],  zip));
+                        insertRestaurant(connection, information, zip);
                         response.redirect("/home.html");
                         return "";
                     }
@@ -154,16 +160,20 @@ public class Main {
                     } else {
                         int id = Integer.valueOf(request.queryParams("id"));
                         for (Restaurant restaurant: globalRestaurants){
+                            restaurant.setEdit(false);
+                            restaurant.setDisplay(true);
                             if (restaurant.getId() == id){
                                 restaurant.setEdit(true);
-                                break;
-                                //NEED TO FINISH HERE AS WELL AS RESET THE EDIT VALUE
+                                restaurant.setDisplay(false);
+                                edit = true;
                             }
                         }
+                        response.redirect("/viewall.html");
+                        return "";
 
                     }
                 })
-        )
+        );
         Spark.post(
                 "/edit-restaurant",
                 ((request, response) -> {
@@ -175,7 +185,6 @@ public class Main {
                         return "";
                     } else {
                         int id = Integer.valueOf(request.queryParams("id"));
-                        updateRestaurant(connection, id, information, zip);
 
                         //0:street 1:city 2:state 3:name 4:type
                         String[] information = new String[5];
@@ -188,11 +197,92 @@ public class Main {
 
                         zip = Integer.valueOf(request.queryParams("zip"));
                         updateRestaurant(connection, id, information, zip);
+                        edit = false;
+                        search = false;
+                        for (Restaurant restaurant: globalRestaurants){
+                            restaurant.setEdit(false);
+                            restaurant.setDisplay(true);
+                        }
                         response.redirect("/viewall.html");
                         return "";
                     }
                 })
-        )
+        );
+        Spark.post(
+                "/cancel-edit",
+                ((request, response) -> {
+                    Session session = request.session();
+                    String userName = session.attribute("userName");
+                    if (userName == null){
+                        response.redirect("/");
+                        return "";
+                    } else {
+                        for (Restaurant restaurant : globalRestaurants) {
+                            restaurant.setEdit(false);
+                            restaurant.setDisplay(true);
+                        }
+                        edit = false;
+                        response.redirect("/viewall.html");
+                        return "";
+                    }
+                })
+        );
+        Spark.post(
+                "/delete",
+                ((request, response) -> {
+                    Session session = request.session();
+                    String userName = session.attribute("userName");
+                    if (userName == null){
+                        response.redirect("/");
+                        return "";
+                    } else {
+                        int id = Integer.valueOf(request.queryParams("id"));
+                        deleteRestaurant(connection, id);
+                        response.redirect("/viewall.html");
+                        return "";
+                    }
+                })
+        );
+        Spark.post(
+                "/search",
+                ((request, response) -> {
+                    Session session = request.session();
+                    String userName = session.attribute("userName");
+                    if (userName == null){
+                        response.redirect("/");
+                        return "";
+                    } else {
+                        String search = request.queryParams("search").toLowerCase();
+                        user.get(userName).setSearch(true);
+                        for(Restaurant restaurant: globalRestaurants){
+                            restaurant.setDisplay(false);
+                            String name = restaurant.getName().toLowerCase();
+                            if (name.contains(search)){
+                                restaurant.setDisplay(true);
+                            }
+                        }
+                        Main.search = true;
+                        response.redirect("/viewall.html");
+                        return "";
+                    }
+                })
+        );
+        Spark.post(
+                "/cancel-search",
+                ((request, response) -> {
+                    Session session = request.session();
+                    String userName = session.attribute("userName");
+                    if (userName == null){
+                        response.redirect("/");
+                        return "";
+                    } else {
+                        user.get(userName).setSearch(false);
+                        Main.search = false;
+                        response.redirect("/viewall.html");
+                        return "";
+                    }
+                })
+        );
 
 
     }
@@ -221,21 +311,38 @@ public class Main {
 
     }
     public static void deleteRestaurant(Connection connection, int id) throws SQLException{
-        PreparedStatement delete = connection.prepareStatement("DELETE FROM restaurants WHERE id = id");
+        PreparedStatement delete = connection.prepareStatement("DELETE FROM restaurants WHERE id = ?");
+        delete.setInt(1, id);
         delete.execute();
     }
-//    public static ArrayList<Restaurant> selectRestaurants() throws SQLException{
-//
-//    }
+    public static ArrayList<Restaurant> selectRestaurants(Connection connection) throws SQLException{
+        ArrayList<Restaurant> restaurants = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet results = statement.executeQuery("SELECT * FROM restaurants");
+        while (results.next()) {
+            //id IDENTITY, name VARCHAR, type VARCHAR, street VARCHAR, city VARCHAR, state VARCHAR, zip INTEGER
+            int id = results.getInt("id");
+            String name = results.getString("name");
+            String type = results.getString("type");
+            String street  = results.getString("street");
+            String city = results.getString("city");
+            String state = results.getString("state");
+            int zip = results.getInt("zip");
+
+            restaurants.add(new Restaurant(id, name, type, street, city, state, zip));
+        }
+        return restaurants;
+    }
     public static void updateRestaurant(Connection connection, int id, String[] information, int zip) throws SQLException{
         //id IDENTITY, name VARCHAR, type VARCHAR, street VARCHAR, city VARCHAR, state VARCHAR, zip INTEGER
-        PreparedStatement update = connection.prepareStatement("UPDATE restaurants SET name = ?, type = ?, street = ?, city = ?, state = ?, zip = ? WHERE id = id");
+        PreparedStatement update = connection.prepareStatement("UPDATE restaurants SET name = ?, type = ?, street = ?, city = ?, state = ?, zip = ? WHERE id = ?");
         update.setString(1, information[0]);
         update.setString(2, information[1]);
         update.setString(3, information[2]);
         update.setString(4, information[3]);
         update.setString(5, information[4]);
         update.setInt(6, zip);
+        update.setInt(7, id);
         update.execute();
     }
 }

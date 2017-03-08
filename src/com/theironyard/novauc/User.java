@@ -4,6 +4,7 @@ public class User {
 
     private boolean homePage = false;
     private boolean viewAllPage = false;
+    private boolean search = false;
     private String userName;
     private String password;
 
@@ -43,5 +44,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isSearch() {
+        return search;
+    }
+
+    public void setSearch(boolean search) {
+        this.search = search;
     }
 }

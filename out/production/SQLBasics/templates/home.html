@@ -38,11 +38,11 @@
                     <input type="text" placeholder="Name:" name="name">
                     <select name="type" >
                         <option selected disabled>Type</option>
-                        <option value="Classic">Casual</option>
-                        <option value="Sci-fi">Fast Food</option>
-                        <option value="Modern">Dining</option>
-                        <option value="Horror">Fine Dining</option>
-                        <option value="Mystery">Takeout</option>
+                        <option value="Casual">Casual</option>
+                        <option value="Fast Food">Fast Food</option>
+                        <option value="Dining">Dining</option>
+                        <option value="Fine Dining">Fine Dining</option>
+                        <option value="Takeout">Takeout</option>
                     </select>
                 </div>
                 <div>
@@ -57,8 +57,20 @@
             </form>
         {{/homePage}}
         {{#viewAllPage}}
+             <h1>All locations</h1>
+             <form action="/search" method="post">
+                 <input type="text" placeholder="Name: " name="search">
+                 <button type="submit">Search</button>
+             </form>
+            {{#search}}
+                <form action="/cancel-search" method="post">
+                    <button type="submit">Cancel Search</button>
+                </form>
+            {{/search}}
+            <hr />
+            <br />
             {{#restaurants}}
-                <h1>All locations</h1>
+            {{#display}}
                 <div>
                     <h5>{{name}}</h5>
                     <p>{{type}}</p>
@@ -67,7 +79,7 @@
                     {{street}}
                 </div>
                 <div>
-                    <p>{{city}} | {{state}} | {{zip}}</p>
+                    <p>{{city}}, {{state}}  {{zip}}</p>
                 </div>
                 <div>
                     <form action="/delete" method="post">
@@ -79,6 +91,39 @@
                         <button type="submit">Edit</button>
                     </form>
                 </div>
+                <hr />
+                {{/display}}
+                {{#edit}}
+                <div>
+                <form action="/edit-restaurant" method="post">
+                    <div>
+                        <input type="hidden" value="{{id}}" name="id">
+                        <input type="text" value="{{name}}" name="name">
+                        <select name="type" >
+                            <option selected>{{type}}</option>
+                            <option value="Casual">Casual</option>
+                            <option value="Fast Food">Fast Food</option>
+                            <option value="Dining">Dining</option>
+                            <option value="Fine Dining">Fine Dining</option>
+                            <option value="Takeout">Takeout</option>
+                        </select>
+                    </div>
+                    <div>
+                        <input type="text" value="{{street}}" name="street">
+                    </div>
+                    <div>
+                        <input type="text" value="{{city}}" name="city">
+                        <input type="text" value="{{state}}" name="state">
+                        <input type="text" value="{{zip}}" name="zip">
+                    </div>
+                    <button type="submit">edit location</button>
+                </form>
+                <form action="cancel-edit" method="post">
+                    <button type="submit">cancel</button>
+                </form>
+                <hr />
+                </div>
+                {{/edit}}
             {{/restaurants}}
         {{/viewAllPage}}
     {{/user}}

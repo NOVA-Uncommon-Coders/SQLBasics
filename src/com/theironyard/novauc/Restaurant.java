@@ -9,6 +9,7 @@ public class Restaurant {
     private String name;
     private String type;
     private boolean edit;
+    private boolean display;
 
     //id IDENTITY, name VARCHAR, type VARCHAR, street VARCHAR, city VARCHAR, state VARCHAR, zip INTEGER
     public Restaurant(int id, String name, String type, String street, String city, String state, int zip ) {
@@ -20,6 +21,7 @@ public class Restaurant {
         this.id = id;
         this.zip = zip;
         this.edit = false;
+        this.display = true;
     }
 
     public int getId() {
@@ -84,5 +86,13 @@ public class Restaurant {
 
     public void setEdit(boolean edit) {
         this.edit = edit;
+    }
+
+    public boolean isDisplay() {
+        return display;
+    }
+
+    public void setDisplay(boolean display) {
+        this.display = display;
     }
 }

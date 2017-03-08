@@ -35,16 +35,16 @@ nav a{
     padding: 15px 10px;
 }
 body{
-    background:#999;
+    background:#ffbc9e;
     color:#fff;
 }
 header{
-    background: #6ab47b;
-    border-color: #599a68;
+    background: #f47a42;
+    border-color: #f47a42;
 }
 
 nav {
-    background:#599a68;
+    background:#f47a42;
 }
 
 h1,h2{
@@ -54,14 +54,14 @@ h1,h2{
 
 
 a{
-    color: #6ab47b;
+    color: #f7dbcf;
 }
 
 nav a, nav a:visited{
-    color:#fff;
+    color:#f7dbcf;
 }
 nav a.selected, nav a:hover{
-    color:#32673f;
+    color:#c13b00;
 }
 
 .post-button{
