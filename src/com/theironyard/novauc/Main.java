@@ -12,25 +12,41 @@ import java.util.HashMap;
 
 public class Main {
 
-//    public static void insertRestaurant(Connection conn, String restaurantName, Boolean is_tasty, int numWaiters) throws SQLException {
-//        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO restaurants VALUES " +
-//                "(NULL, ?, ?, ?)");
-//        pstmt.execute();
-//    }
+    public static void insertRestaurant(String restName, Boolean restTasty, int restNumWaiters) throws SQLException {
+        //PreparedStatement pstmt = conn.prepareStatement("INSERT INTO restaurants VALUES (NULL, ?, ?, ?)");
+        PreparedStatement ps = getConnection().prepareStatement
+                ("INSERT INTO restaurants (restName, restTasty, restNumWaiters) VALUES (?, ?, ?)");
+        User user = currentUser();
+        ps.setString(1,restName);
+        ps.setBoolean(2,restTasty);
+        ps.setInt(3,restNumWaiters);
+        ps.execute();
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection("jdbc:h2:./main");
+    }
+
+    public static void createTables() throws SQLException {
+        Statement stated = getConnection().createStatement();
+        stated.execute("CREATE TABLE IF NOT EXISTS restaurants (id IDENTITY, restName VARCHAR, restTasty BOOLEAN, restNumWaiters INT )");
+        stated.execute("CREATE TABLE IF NOT EXISTS user (id IDENTITY , userName VARCHAR, password VARCHAR)");
+    }
+
+    public static User currentUser() {
+        return new User(1, "billyray");
+    }
+
     public static HashMap<String, User> accountInfo = new HashMap<>();
-    public static ArrayList<Restaurant> entries = new ArrayList<>();
+    public static ArrayList<Restaurant> restAL = new ArrayList<>();
 
     public static void main(String[] args) throws SQLException {
-//        Server.createWebServer().start();
-//
-//        Connection conn = DriverManager.getConnection("jdbc:h2:./main");
-//        Statement stmt = conn.createStatement();
-//        stmt.execute("CREATE TABLE IF NOT EXISTS restaurants (id IDENTITY, restaurantName VARCHAR(100), " +
-//                " is_tasty BOOLEAN, numWaiters INT)");
 
         Spark.init();
+        Server.createWebServer().start();
+        createTables();
 
-        //TODO set entries to accept all three html fields, not just the first
+        //TODO set restAL to accept all three html fields, not just the first
 
         Spark.get("/", ((request, response) -> {
             Session session = request.session();
@@ -40,7 +56,7 @@ public class Main {
                 return new ModelAndView(userActivity,"index.html");
                 }
             else {
-                  userActivity.put("entries", entries);
+                  userActivity.put("entries", restAL);
                   userActivity.put("userName", name);
                   return new ModelAndView(userActivity, "index.html");
                   }
@@ -63,24 +79,23 @@ public class Main {
                 accountInfo.put(name, new User(name, password));
             }
             response.redirect("/");
-            return "failure at the end of /login";
+            return "";
         });
 
         Spark.post("/create-restaurant", ((request, response) -> {
             Session session = request.session();
             String name = session.attribute("userName");
-            String message = request.queryParams("newEntry");
 
-            String restaurantName = request.queryParams("restaurantName");
-            Boolean tasty = Boolean.getBoolean(request.queryParams("restaurantTasty"));
-            int numWaiters = Integer.valueOf(request.queryParams("restaurantNumWaiters"));
+            String restName = request.queryParams("restName");
+            Boolean restTasty = Boolean.getBoolean(request.queryParams("restTasty"));
+            int restNumWaiters = Integer.valueOf(request.queryParams("restNumWaiters"));
 
-            Restaurant entryObj = new Restaurant(restaurantName, tasty, numWaiters);
-            entries.add(entryObj);
+            Restaurant entryObj = new Restaurant(restName, restTasty, restNumWaiters);
+            restAL.add(entryObj);
 
+            System.out.println(entryObj.toString());
 
-            /*insertRestaurant(conn, name, tasty ,numWaiters);*/
-
+            insertRestaurant(restName, restTasty,restNumWaiters);
 
             response.redirect("/");
             return "";
@@ -92,7 +107,7 @@ public class Main {
             int edit = Integer.valueOf(request.queryParams("messID"));
 
             Restaurant entrance = null;
-            for (Restaurant picker : entries) {
+            for (Restaurant picker : restAL) {
                 if (/*picker.getId()*/ 1 ==  edit) {
                     entrance = picker;
                     break;
@@ -119,12 +134,12 @@ public class Main {
         Spark.post("/delete-restaurant", (request, response) -> {
             int delete = Integer.valueOf(request.queryParams("messDel"));
             Restaurant entrance = new Restaurant();
-            for (Restaurant picker : entries) {
+            for (Restaurant picker : restAL) {
                 if (/*picker.getId()*/ 1 ==  delete) {
                     entrance = picker;
                 }
             }
-            entries.remove(entrance);
+            restAL.remove(entrance);
             response.redirect("/");
             return "";
         });

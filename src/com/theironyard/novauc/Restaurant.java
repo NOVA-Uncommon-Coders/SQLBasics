@@ -1,27 +1,27 @@
 package com.theironyard.novauc;
 
 public class Restaurant {
-    private String restaurantName;
-    private Boolean tasty;
-    private int numWaiters;
+    private String restName;
+    private Boolean restTasty;
+    private int restNumWaiters;
 
-    public Restaurant(String restaurantName, Boolean tasty, int numWaiters){
-        this.restaurantName = restaurantName;
-        this.tasty = tasty;
-        this.numWaiters = numWaiters;
+    public Restaurant(String restName, Boolean restTasty, int restNumWaiters){
+        this.restName = restName;
+        this.restTasty = restTasty;
+        this.restNumWaiters = restNumWaiters;
     }
 
     public Restaurant() {}
 
-    public String getRestaurantName() {
-        return restaurantName;
+    public String getRestName() {
+        return restName;
     }
 
-    public Boolean getTasty() {
-        return tasty;
+    public Boolean getRestTasty() {
+        return restTasty;
     }
 
-    public int getNumWaiters() {
-        return numWaiters;
+    public int getRestNumWaiters() {
+        return restNumWaiters;
     }
 }
