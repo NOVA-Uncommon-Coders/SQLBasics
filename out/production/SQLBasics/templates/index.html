@@ -1,8 +1,10 @@
 <html>
 <body>
 {{^userName}}
-<form action="/login" method="get">
+<form action="/login" method="post">
     <input type="text" placeholder="name" name="userName">
+    <input type="password" placeholder="password" name="passwordLogin">
+    <button type="submit">Submit</button>
 </form>
 {{/userName}}
 
@@ -12,6 +14,20 @@
     <input type="text" placeholder="is it tasty? true/false" name="restaurantTasty">
     <input type="number" placeholder="number waiters?" name="restaurantNumWaiters">
     <button type="submit">Submit</button>
+
+</form>
+
+{{#entries}}
+{{restaurantName}}
+{{restaurantTasty}}
+{{restaurantNumWaiters}}
+{{/entries}}
+
+<form action="/delete-restaurant" method="post">
+
+</form>
+
+<form action="/edit-restaurant" method="post">
 
 </form>
 {{/userName}}
