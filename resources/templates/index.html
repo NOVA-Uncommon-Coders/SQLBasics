@@ -11,7 +11,7 @@
 {{#userName}}
 <form action="/create-restaurant" method="post">
     <input type="text" placeholder="restaurant name" name="restName">
-    <input type="text" placeholder="is it tasty? true/false" name="restTasty">
+    <input type="text" placeholder="best dish" name="bestDish">
     <input type="number" placeholder="number waiters?" name="restNumWaiters">
     <button type="submit">Submit</button>
 
@@ -19,9 +19,9 @@
 
 {{#entries}}
 <ul>
-{{restName}}
-{{restTasty}}
-{{restNumWaiters}}
+    {{restName}}
+    {{bestDish}}
+    {{restNumWaiters}}
 </ul>
 {{/entries}}
 

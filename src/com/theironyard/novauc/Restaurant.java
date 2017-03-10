@@ -2,12 +2,12 @@ package com.theironyard.novauc;
 
 public class Restaurant {
     private String restName;
-    private Boolean restTasty;
+    private String bestDish;
     private int restNumWaiters;
 
-    public Restaurant(String restName, Boolean restTasty, int restNumWaiters){
+    public Restaurant(String restName, String bestDish, int restNumWaiters){
         this.restName = restName;
-        this.restTasty = restTasty;
+        this.bestDish = bestDish;
         this.restNumWaiters = restNumWaiters;
     }
 
@@ -17,8 +17,8 @@ public class Restaurant {
         return restName;
     }
 
-    public Boolean getRestTasty() {
-        return restTasty;
+    public String getBestDish() {
+        return bestDish;
     }
 
     public int getRestNumWaiters() {

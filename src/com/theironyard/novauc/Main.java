@@ -12,13 +12,12 @@ import java.util.HashMap;
 
 public class Main {
 
-    public static void insertRestaurant(String restName, Boolean restTasty, int restNumWaiters) throws SQLException {
-        //PreparedStatement pstmt = conn.prepareStatement("INSERT INTO restaurants VALUES (NULL, ?, ?, ?)");
+    public static void insertRestaurant(String restName, String bestDish, int restNumWaiters) throws SQLException {
         PreparedStatement ps = getConnection().prepareStatement
-                ("INSERT INTO restaurants (restName, restTasty, restNumWaiters) VALUES (?, ?, ?)");
+                ("INSERT INTO restaurants (restName, bestDish, restNumWaiters) VALUES (?, ?, ?)");
         User user = currentUser();
         ps.setString(1,restName);
-        ps.setBoolean(2,restTasty);
+        ps.setString(2,bestDish);
         ps.setInt(3,restNumWaiters);
         ps.execute();
     }
@@ -29,7 +28,7 @@ public class Main {
 
     public static void createTables() throws SQLException {
         Statement stated = getConnection().createStatement();
-        stated.execute("CREATE TABLE IF NOT EXISTS restaurants (id IDENTITY, restName VARCHAR, restTasty BOOLEAN, restNumWaiters INT )");
+        stated.execute("CREATE TABLE IF NOT EXISTS restaurants (id IDENTITY, restName VARCHAR, bestDish VARCHAR, restNumWaiters INT )");
         stated.execute("CREATE TABLE IF NOT EXISTS user (id IDENTITY , userName VARCHAR, password VARCHAR)");
     }
 
@@ -45,8 +44,6 @@ public class Main {
         Spark.init();
         Server.createWebServer().start();
         createTables();
-
-        //TODO set restAL to accept all three html fields, not just the first
 
         Spark.get("/", ((request, response) -> {
             Session session = request.session();
@@ -87,15 +84,13 @@ public class Main {
             String name = session.attribute("userName");
 
             String restName = request.queryParams("restName");
-            Boolean restTasty = Boolean.getBoolean(request.queryParams("restTasty"));
+            String bestDish = request.queryParams("bestDish");
             int restNumWaiters = Integer.valueOf(request.queryParams("restNumWaiters"));
 
-            Restaurant entryObj = new Restaurant(restName, restTasty, restNumWaiters);
+            Restaurant entryObj = new Restaurant(restName, bestDish, restNumWaiters);
             restAL.add(entryObj);
 
-            System.out.println(entryObj.toString());
-
-            insertRestaurant(restName, restTasty,restNumWaiters);
+            insertRestaurant(restName, bestDish,restNumWaiters);
 
             response.redirect("/");
             return "";
