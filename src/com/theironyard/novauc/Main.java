@@ -15,7 +15,6 @@ public class Main {
     public static void insertRestaurant(String restName, String bestDish, int restNumWaiters) throws SQLException {
         PreparedStatement ps = getConnection().prepareStatement
                 ("INSERT INTO restaurants (restName, bestDish, restNumWaiters) VALUES (?, ?, ?)");
-        //User user = currentUser();
         ps.setString(1,restName);
         ps.setString(2,bestDish);
         ps.setInt(3,restNumWaiters);
@@ -55,11 +54,10 @@ public class Main {
 
     public static void updateRestaurant(String restName, String bestDish, int restNumWaiters) throws SQLException {
         PreparedStatement ps = getConnection().prepareStatement
-                ("UPDATE restaurants SET (restName, bestDish, restNumWaiters) VALUES (?, ?, ?)");
-        //User user = currentUser();
-        ps.setString(1,"restEditName");
-        ps.setString(2,"restEditDish");
-        ps.setInt(3,"restEditDish");
+                ("UPDATE restaurants SET bestDish = ?, restNumWaiters = ? WHERE restName = ?");
+        ps.setString(3,restName);
+        ps.setString(1,bestDish);
+        ps.setInt(2,restNumWaiters);
         ps.execute();
     }
 
@@ -111,15 +109,10 @@ public class Main {
         });
 
         Spark.post("/create-restaurant", (request, response) -> {
-//            Session session = request.session();
-//            String name = session.attribute("userName");
 
             String restName = request.queryParams("restName");
             String bestDish = request.queryParams("bestDish");
             int restNumWaiters = Integer.valueOf(request.queryParams("restNumWaiters"));
-
-//            Restaurant entryObj = new Restaurant(restName, bestDish, restNumWaiters);
-//            restAL.add(entryObj);
 
             insertRestaurant(restName, bestDish,restNumWaiters);
 
@@ -128,46 +121,20 @@ public class Main {
         });
 
         Spark.post("/edit-restaurant", (request, response) -> {
-            //String editor = request.queryParams("editMessageT");
 
-            //int edit = Integer.valueOf(request.queryParams("messID"));
+            //int id = Integer.valueOf(request.queryParams("restEditId"));
+            String restName = request.queryParams("restEditName");
+            String bestDish = request.queryParams("restEditDish");
+            int restNumWaiters = Integer.valueOf(request.queryParams("restEditWaiters"));
 
-            Restaurant entrance = null;
-            for (Restaurant picker : restAL) {
-                if (/*picker.getId()*/ 1 ==  edit) {
-                    entrance = picker;
-                    break;
-                }
-            }
-            if (entrance != null && editor != null){
-                //entrance.setText(editor);
-            }
-
+            updateRestaurant(restName, bestDish, restNumWaiters);
 
             response.redirect("/");
             return "";
         });
 
-//        Spark.get("/anotherplace/:id", ((request, response) -> {
-//                    String idJunk = request.params("id");
-//                    HashMap whatever = new HashMap();
-//                    whatever.put("id",idJunk);
-//                    return new ModelAndView(whatever, "anotherplace.html");
-//                }), new MustacheTemplateEngine()
-//        );
-
         Spark.post("/delete-restaurant", (request, response) -> {
-//            int delete = Integer.valueOf(request.queryParams("restDelete"));
-//            Restaurant entrance = new Restaurant();
-//            for (Restaurant picker : restAL) {
-//                if (/*picker.getId()*/ 1 ==  delete) {
-//                    entrance = picker;
-//                }
-//            }
-//            restAL.remove(entrance);
-            
             deleteRestaurant(Integer.valueOf(request.queryParams("restDelete")));
-
             response.redirect("/");
             return "";
         });

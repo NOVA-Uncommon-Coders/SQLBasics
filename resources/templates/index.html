@@ -9,6 +9,11 @@
 {{/userName}}
 
 {{#userName}}
+{{.}}
+<form action="/logout" method="post">
+    <button type="logout">Logout</button>
+</form>
+
 <form action="/create-restaurant" method="post">
     <input type="text" placeholder="restaurant name" name="restName">
     <input type="text" placeholder="best dish" name="bestDish">
@@ -17,11 +22,12 @@
 </form>
 
 <form action="/delete-restaurant" method="post">
-    <input type="number" placeholder="delete which number?" name="restDelete">
+    <input type="number" placeholder="delete which #?" name="restDelete">
     <button type="submit">Delete</button>
 </form>
 
 <form action="/edit-restaurant" method="post">
+    <!--input type="number" placeholder="edit which #?" name="restEditId"-->
     <input type="text" placeholder="edit name" name="restEditName">
     <input type="text" placeholder="edit dish" name="restEditDish">
     <input type="number" placeholder="edit # waiters" name="restEditWaiters">
