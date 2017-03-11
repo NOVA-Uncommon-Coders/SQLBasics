@@ -11,10 +11,14 @@ Fork the Sql-Homework project from [here](https://github.com/NOVA-Uncommon-Coder
 
 ## Requirements
 
-* Create the `Connection` and execute a query to create a `restaurants` table that stores the restaurant name and other attributes.
-* Write a static method `insertRestaurant` and run it in the `/create-restaurant ` route. It should insert a new row with the user-supplied information.
-* Write a static method `deleteRestaurant` and run it in the `/delete-restaurant ` route. It should remove the correct row using `id`.
+* Create the `Connection` and execute a query to create a `restaurants` table that stores the restaurant name and other attributes. //complete
+* Write a static method `insertRestaurant` and run it in the `/create-restaurant `
+        route. It should insert a new row with the user-supplied information. //complete
+* Write a static method `deleteRestaurant` and run it in the `/delete-restaurant ` route.
+        It should remove the correct row using `id`. //complete
 * Write a static method `selectRestaurants` that returns an `ArrayList<Restaurant>` containing all the restaurants in the database.
 * Remove the global `ArrayList<Restaurant>` and instead just call `selectRestaurants` inside the "/" route.
-* Add a form to edit the restaurant name and other attributes, and create an `/edit-restaurant` route. Write a static method `updateRestaurant` and use it in that route. Then redirect to "/".
-* Optional: Add a search form which filters the restaurant list to only those restaurants whose name contains the (case-insensitive) search string.
+* Add a form to edit the restaurant name and other attributes, and create an `/edit-restaurant` route.
+        Write a static method `updateRestaurant` and use it in that route. Then redirect to "/".
+* Optional: Add a search form which filters the restaurant list to only those restaurants whose name
+    contains the (case-insensitive) search string.
