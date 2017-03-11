@@ -12,26 +12,32 @@
 <form action="/create-restaurant" method="post">
     <input type="text" placeholder="restaurant name" name="restName">
     <input type="text" placeholder="best dish" name="bestDish">
-    <input type="number" placeholder="number waiters?" name="restNumWaiters">
+    <input type="number" placeholder="# waiters?" name="restNumWaiters">
     <button type="submit">Submit</button>
-
 </form>
 
-{{#entries}}
-<ul>
-    {{restName}}
-    {{bestDish}}
-    {{restNumWaiters}}
-</ul>
-{{/entries}}
-
 <form action="/delete-restaurant" method="post">
-
+    <input type="number" placeholder="delete which number?" name="restDelete">
+    <button type="submit">Delete</button>
 </form>
 
 <form action="/edit-restaurant" method="post">
-
+    <input type="text" placeholder="edit name" name="restEditName">
+    <input type="text" placeholder="edit dish" name="restEditDish">
+    <input type="number" placeholder="edit # waiters" name="restEditWaiters">
+    <button type="submit">Edit</button>
 </form>
+
+
+
+{{#entries}}
+<ul>
+    {{id}}:
+    {{restName}} /
+    {{bestDish}} /
+    {{restNumWaiters}}
+</ul>
+{{/entries}}
 {{/userName}}
 
 </body>

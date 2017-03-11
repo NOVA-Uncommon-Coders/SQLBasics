@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d6770381-c08d-4aca-8413-b330b01058b1" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/SQLBasics/com/theironyard/novauc/Main.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.mv.db" afterPath="$PROJECT_DIR$/main.mv.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.trace.db" afterPath="$PROJECT_DIR$/main.trace.db" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/SQLBasics/templates/index.html" afterPath="$PROJECT_DIR$/out/production/SQLBasics/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/templates/index.html" afterPath="$PROJECT_DIR$/resources/templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/theironyard/novauc/Main.java" afterPath="$PROJECT_DIR$/src/com/theironyard/novauc/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/theironyard/novauc/Restaurant.java" afterPath="$PROJECT_DIR$/src/com/theironyard/novauc/Restaurant.java" />
@@ -30,13 +33,17 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/theironyard/novauc/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="55" column="50" lean-forward="false" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
+            <state relative-caret-position="15">
+              <caret line="42" column="64" lean-forward="true" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1489110203000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
-                <marker date="1489110203000" expanded="true" signature="1011:1120" ph="CREATE TABLE... IF" />
-                <marker date="1489110203000" expanded="true" signature="1148:1230" ph="CREATE TABLE... IF" />
+                <marker date="1489261609000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
+                <marker date="1489261609000" expanded="true" signature="1013:1122" ph="CREATE TABLE... IF" />
+                <marker date="1489261609000" expanded="true" signature="1150:1232" ph="CREATE TABLE... IF" />
+                <marker date="1489261609000" expanded="true" signature="1378:1412" ph="DELETE FROM " />
+                <marker date="1489261609000" expanded="true" signature="1617:1642" ph="SELECT * FRO... restaurants" />
+                <marker date="1489261609000" expanded="true" signature="1617:1645" ph="SELECT * FRO... " />
+                <marker date="1489261609000" expanded="true" signature="2356:2432" ph="UPDATE resta... " />
               </folding>
             </state>
           </provider>
@@ -62,16 +69,9 @@
       <file leaf-file-name="Restaurant.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/theironyard/novauc/Restaurant.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-              <folding>
-                <element signature="e#408#409#0" expanded="true" />
-                <element signature="e#439#440#0" expanded="true" />
-                <element signature="e#474#475#0" expanded="true" />
-                <element signature="e#505#506#0" expanded="true" />
-                <element signature="e#543#544#0" expanded="true" />
-                <element signature="e#580#581#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="45">
+              <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,8 +79,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="282">
+              <caret line="27" column="30" lean-forward="false" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -130,9 +130,12 @@
       <find>insert</find>
       <find>conn(</find>
       <find>DriverMan</find>
-      <find>entries</find>
       <find>Boolean</find>
       <find>restTasty</find>
+      <find>oFrestaurants</find>
+      <find>best</find>
+      <find>entries</find>
+      <find>rs.</find>
     </findStrings>
     <replaceStrings>
       <replace>login</replace>
@@ -143,6 +146,8 @@
       <replace>bestDish</replace>
       <replace>String</replace>
       <replace>entries</replace>
+      <replace>restaurantsAL</replace>
+      <replace>results.</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -158,9 +163,9 @@
       <list>
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/com/theironyard/novauc/User.java" />
-        <option value="$PROJECT_DIR$/src/com/theironyard/novauc/Main.java" />
         <option value="$PROJECT_DIR$/src/com/theironyard/novauc/Restaurant.java" />
         <option value="$PROJECT_DIR$/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/src/com/theironyard/novauc/Main.java" />
       </list>
     </option>
   </component>
@@ -171,7 +176,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1280" />
+    <option name="x" value="2" />
+    <option name="width" value="1276" />
     <option name="height" value="800" />
   </component>
   <component name="ProjectView">
@@ -189,6 +195,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -240,7 +247,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -251,9 +257,9 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.30750895" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
@@ -686,15 +692,17 @@
       <updated>1488897257693</updated>
       <workItem from="1488925006527" duration="8588000" />
       <workItem from="1489013017623" duration="3741000" />
-      <workItem from="1489018465795" duration="17677000" />
+      <workItem from="1489018465795" duration="22569000" />
+      <workItem from="1489189619832" duration="1000" />
+      <workItem from="1489189730557" duration="7350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30006000" />
+    <option name="totallyTimeSpent" value="42249000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="6" />
+    <frame x="2" y="0" width="1276" height="800" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -712,7 +720,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15347335" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15802269" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -759,9 +767,147 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489110203000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
-            <marker date="1489110203000" expanded="true" signature="1011:1120" ph="CREATE TABLE... IF" />
-            <marker date="1489110203000" expanded="true" signature="1148:1230" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
+            <marker date="1489261609000" expanded="true" signature="1013:1122" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1150:1232" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1378:1412" ph="DELETE FROM " />
+            <marker date="1489261609000" expanded="true" signature="1617:1642" ph="SELECT * FRO... restaurants" />
+            <marker date="1489261609000" expanded="true" signature="1617:1645" ph="SELECT * FRO... " />
+            <marker date="1489261609000" expanded="true" signature="2356:2432" ph="UPDATE resta... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/theironyard/novauc/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding>
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+            <element signature="e#637#638#0" expanded="true" />
+            <element signature="e#672#673#0" expanded="true" />
+            <element signature="e#703#704#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/theironyard/novauc/Restaurant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="43" lean-forward="false" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.trace.db">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/theironyard/novauc/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1489261609000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
+            <marker date="1489261609000" expanded="true" signature="1013:1122" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1150:1232" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1378:1412" ph="DELETE FROM " />
+            <marker date="1489261609000" expanded="true" signature="1617:1642" ph="SELECT * FRO... restaurants" />
+            <marker date="1489261609000" expanded="true" signature="1617:1645" ph="SELECT * FRO... " />
+            <marker date="1489261609000" expanded="true" signature="2356:2432" ph="UPDATE resta... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/theironyard/novauc/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding>
+            <element signature="e#546#547#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+            <element signature="e#637#638#0" expanded="true" />
+            <element signature="e#672#673#0" expanded="true" />
+            <element signature="e#703#704#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/theironyard/novauc/Restaurant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="43" lean-forward="false" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.trace.db">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/theironyard/novauc/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1489261609000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
+            <marker date="1489261609000" expanded="true" signature="1013:1122" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1150:1232" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1378:1412" ph="DELETE FROM " />
+            <marker date="1489261609000" expanded="true" signature="1617:1642" ph="SELECT * FRO... restaurants" />
+            <marker date="1489261609000" expanded="true" signature="1617:1645" ph="SELECT * FRO... " />
+            <marker date="1489261609000" expanded="true" signature="2356:2432" ph="UPDATE resta... " />
           </folding>
         </state>
       </provider>
@@ -770,14 +916,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="22" column="26" lean-forward="false" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-          <folding>
-            <element signature="e#408#409#0" expanded="true" />
-            <element signature="e#439#440#0" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-            <element signature="e#580#581#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -806,9 +945,13 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489110203000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
-            <marker date="1489110203000" expanded="true" signature="1011:1120" ph="CREATE TABLE... IF" />
-            <marker date="1489110203000" expanded="true" signature="1148:1230" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
+            <marker date="1489261609000" expanded="true" signature="1013:1122" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1150:1232" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1378:1412" ph="DELETE FROM " />
+            <marker date="1489261609000" expanded="true" signature="1617:1642" ph="SELECT * FRO... restaurants" />
+            <marker date="1489261609000" expanded="true" signature="1617:1645" ph="SELECT * FRO... " />
+            <marker date="1489261609000" expanded="true" signature="2356:2432" ph="UPDATE resta... " />
           </folding>
         </state>
       </provider>
@@ -838,9 +981,13 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489110203000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
-            <marker date="1489110203000" expanded="true" signature="1011:1120" ph="CREATE TABLE... IF" />
-            <marker date="1489110203000" expanded="true" signature="1148:1230" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
+            <marker date="1489261609000" expanded="true" signature="1013:1122" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1150:1232" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1378:1412" ph="DELETE FROM " />
+            <marker date="1489261609000" expanded="true" signature="1617:1642" ph="SELECT * FRO... restaurants" />
+            <marker date="1489261609000" expanded="true" signature="1617:1645" ph="SELECT * FRO... " />
+            <marker date="1489261609000" expanded="true" signature="2356:2432" ph="UPDATE resta... " />
           </folding>
         </state>
       </provider>
@@ -857,6 +1004,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="147" lean-forward="false" selection-start-line="19" selection-start-column="147" selection-end-line="19" selection-end-column="147" />
+          <folding />
+        </state>
+      </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="0">
@@ -864,12 +1017,6 @@
             <folding />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="147" lean-forward="false" selection-start-line="19" selection-start-column="147" selection-end-line="19" selection-end-column="147" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -896,29 +1043,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/theironyard/novauc/Restaurant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
-          <folding>
-            <element signature="e#408#409#0" expanded="true" />
-            <element signature="e#439#440#0" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-            <element signature="e#580#581#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.trace.db">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -927,15 +1051,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/theironyard/novauc/Restaurant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="17" lean-forward="false" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="27" column="30" lean-forward="false" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/theironyard/novauc/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="55" column="50" lean-forward="false" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="50" />
+        <state relative-caret-position="15">
+          <caret line="42" column="64" lean-forward="true" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1489110203000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
-            <marker date="1489110203000" expanded="true" signature="1011:1120" ph="CREATE TABLE... IF" />
-            <marker date="1489110203000" expanded="true" signature="1148:1230" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="479:556" ph="INSERT INTO restaurants... " />
+            <marker date="1489261609000" expanded="true" signature="1013:1122" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1150:1232" ph="CREATE TABLE... IF" />
+            <marker date="1489261609000" expanded="true" signature="1378:1412" ph="DELETE FROM " />
+            <marker date="1489261609000" expanded="true" signature="1617:1642" ph="SELECT * FRO... restaurants" />
+            <marker date="1489261609000" expanded="true" signature="1617:1645" ph="SELECT * FRO... " />
+            <marker date="1489261609000" expanded="true" signature="2356:2432" ph="UPDATE resta... " />
           </folding>
         </state>
       </provider>
@@ -996,7 +1140,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.30750895" />
                 <option value="0.6" />
               </list>
             </option>

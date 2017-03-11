@@ -14,20 +14,22 @@
     <input type="text" placeholder="best dish" name="bestDish">
     <input type="number" placeholder="number waiters?" name="restNumWaiters">
     <button type="submit">Submit</button>
-
 </form>
+
+<form action="/delete-restaurant" method="post">
+    <input type="number" placeholder="delete which number?" name="restDelete">
+    <button type="submit">Delete</button>
+</form>
+
 
 {{#entries}}
 <ul>
-    {{restName}}
-    {{bestDish}}
+    {{id}}:
+    {{restName}} /
+    {{bestDish}} /
     {{restNumWaiters}}
 </ul>
 {{/entries}}
-
-<form action="/delete-restaurant" method="post">
-
-</form>
 
 <form action="/edit-restaurant" method="post">
 
