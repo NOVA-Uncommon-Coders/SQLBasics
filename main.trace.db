@@ -1,0 +1,21 @@
+2017-03-11 20:28:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+SELECT * FROM restaurants INNER JOIN user [42102-191]
+2017-03-11 20:29:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USER" not found; SQL statement:
+SELECT * FROM restaurants INNER JOIN user [42102-191]
+2017-03-12 18:22:31 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "USERS" not found; SQL statement:
+SELECT FROM restaurants INNER  JOIN users ON restaurnts.user_id = users.id WHERE restaurants = ? [42102-191]
+2017-03-12 18:33:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS RESTAURANTS(ID IDENTITY, USER_ID INT,TYPE VARCHAR, LOCATION VARCHAR,CUISINE VARCHAR, [*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS restaurants(id IDENTITY, user_id INT,type VARCHAR, location VARCHAR,cuisine VARCHAR, [42001-191]
+2017-03-12 18:34:34 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS RESTAURANTS(ID IDENTITY, USER_ID INT,TYPE VARCHAR, LOCATION VARCHAR,CUISINE VARCHAR, [*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS restaurants(id IDENTITY, user_id INT,type VARCHAR, location VARCHAR,cuisine VARCHAR, [42001-191]
+2017-03-12 18:45:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS RESTAURANTS(ID IDENTITY, USER_ID INT,TYPE VARCHAR, LOCATION VARCHAR,CUISINE VARCHAR, [*]"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS restaurants(id IDENTITY, user_id INT,type VARCHAR, location VARCHAR,cuisine VARCHAR, [42001-191]
+2017-03-12 19:00:46 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT FROM RESTAURANTS INNER  JOIN USERS ON RESTAURNTS.USER_ID = USERS.ID WHERE[*] RESTAURANTS = ? "; expected "(, ., [, ::, *, /, %, +, -, ||, ~, !~, NOT, LIKE, REGEXP, IS, IN, BETWEEN, AND, OR, RIGHT, LEFT, FULL, INNER, JOIN, CROSS, NATURAL, ,, SELECT"; SQL statement:
+SELECT FROM restaurants INNER  JOIN users ON restaurnts.user_id = users.id WHERE restaurants = ? [42001-191]
