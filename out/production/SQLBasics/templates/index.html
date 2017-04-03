@@ -1,0 +1,42 @@
+<html>
+<body>
+<form action="/create-restaurant" method="POST">
+    <p>Name</p>
+    <input type="text" name="name">
+    <p>Food</p>
+    <input type="text" name="food">
+    <p>Hours</p>
+    <select name="isOpen">
+        <option value="true">Open</option>
+        <option value="false">Closed</option>
+    </select>
+    <button>Suggest</button>
+</form>
+<ul>
+{{#restaurants}}
+
+    <li>
+        <p>{{name}} : {{isOpen}}</p>
+        <p>{{food}}</p>
+        <form action="/delete-restaurant" method="post">
+            <input type="hidden" value={{id}} name="id" width="200"/>
+            <button type="submit">Delete</button>
+        </form>
+
+        <form action="/edit-restaurant" method="post">
+            <input type="hidden" value={{id}} name="id" width="200"/>
+            <input type="text" value={{name}} name="name" width="200"/>
+            <input type="text" value={{food}} name="food" width="200"/>
+            <input type="text" value={{isOpen}} name="isOpen" width="200"/>
+            <button type="submit">Update</button>
+        </form>
+
+    </li>
+
+
+{{/restaurants}}
+</ul>
+
+</form>
+</body>
+</html>
