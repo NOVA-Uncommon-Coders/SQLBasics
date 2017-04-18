@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<html>
+<head>
+
+</head>
+<body>
+
+<form action="/create-restaurant" method="post">
+    <input type="text" placeholder="Enter restaurants name" name="name" size="30">
+    <input type="text" placeholder="Choose location?" name="location"size="30">
+    <input type="text" placeholder="Meal Speciality" name="mealSpeciality" size="30">
+    <button type="submit">SUBMIT</button>
+</form>
+<hr>
+<form action="/delete-restaurant" method="post">
+    <input type="text" placeholder="Which restaurant name do you wanna delete" name="name" size="35">
+    <button type="submit">DELETE</button>
+
+</form>
+<hr>
+<table>
+    <tr>
+        <th>Restaurant name</th>
+        <th>Location</th>
+        <th>MealSpeciality</th>
+    </tr>
+</table>
+<ul>
+    {{#restaurant}}
+    <li>{{name}}    {{location}}   {{mealSpeciality}}</li>
+
+    {{/restaurant}}
+</ul>
+
+
+<hr>
+<form action="/update-restaurant" method="post">
+
+    <input type="text" placeholder="Which restaurant to update?" name="whichEdit" size="30"><p></p>
+    <input type="text" placeholder="Enter new Name" name="editName" size="30">
+    <input type="text" placeholder="Enter new Location" name="editLocation" size="30">
+    <input type="text" placeholder="Enter new MealSpeciality" name="editMealSpec" size="30">
+    <button type="submit">SUBMIT</button>
+</form>
+</body>
+</html>
